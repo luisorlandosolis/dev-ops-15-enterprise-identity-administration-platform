@@ -4,9 +4,9 @@ diagrams/dev-ops-15-high-level-architecture.png
 
 ## Overview
 
-Dev-Ops-15 is an Enterprise Identity & Administration Platform designed to automate identity lifecycle management, Active Directory provisioning, organizational unit assignment, department group assignment, home folder provisioning, access control enforcement, hybrid identity synchronization, and modern authentication services.
+Dev-Ops-15 is an Enterprise Identity & Administration Platform designed to automate identity lifecycle management, directory services provisioning, organizational unit assignment, department group assignment, home folder provisioning, access control enforcement, hybrid identity synchronization, identity federation, and modern authentication services.
 
-The platform evolved from a simple Active Directory user creation script into a centralized identity solution capable of automating employee onboarding, storage integration, authorization management, logging, and identity provider services.
+The platform evolved from a user provisioning script into a centralized identity platform providing automated onboarding, storage integration, hybrid identity synchronization, enterprise identity federation, persistence, certificate trust management, LDAP integration, OIDC, and SAML capabilities.
 
 ---
 
@@ -14,24 +14,31 @@ The platform evolved from a simple Active Directory user creation script into a 
 
 Dev-Ops-15 serves as the Identity and Access Management (IAM) platform within the broader Platform Engineering portfolio.
 
-The platform integrates traditional Active Directory services with modern identity technologies including Microsoft Entra ID, OpenID Connect (OIDC), SAML, LDAP, LDAPS, and Keycloak.
+The platform bridges traditional directory services and modern authentication technologies including:
+
+- Microsoft Entra ID
+- LDAP
+- LDAPS
+- OIDC
+- SAML
+- Keycloak
 
 ---
 
 ## Project Origin
 
-The project began as a PowerShell-based Active Directory user provisioning script.
+The project began as a PowerShell-based user provisioning solution.
 
-As additional requirements emerged, the solution expanded into a platform that automates:
+As additional requirements emerged, the platform expanded to provide:
 
-- User onboarding
+- Automated onboarding
 - Organizational Unit placement
 - Department group assignment
-- Home folder creation
+- Home folder provisioning
 - ACL management
-- Authentication integration
-- Hybrid identity synchronization
-- Identity provider services
+- Hybrid identity integration
+- Identity federation
+- Single Sign-On services
 
 ---
 
@@ -39,26 +46,29 @@ As additional requirements emerged, the solution expanded into a platform that a
 
 ### Completed Objectives
 
-- Automate Active Directory user creation
+- Automate user creation
 - Automate OU assignment
 - Automate department group assignment
 - Automate home folder creation
-- Automate NTFS permission assignment
-- Automate operational logging
-- Validate user authentication
+- Automate ACL assignment
+- Implement operational logging
 - Validate drive mappings
 - Validate hybrid identity synchronization
-- Deploy Keycloak identity provider
+- Deploy enterprise identity provider
+- Implement LDAP federation
+- Implement LDAPS authentication
+- Implement user synchronization
+- Implement persistent identity services
 
 ### Future Objectives
 
-- Complete LDAP federation
-- Synchronize Active Directory users into Keycloak
-- Synchronize Active Directory groups into Keycloak
-- Implement OIDC authentication for applications
-- Implement SAML federation
-- Build enterprise authorization models
-- Expand application integration
+- Implement OIDC authentication for enterprise applications
+- Implement SAML federation for enterprise applications
+- Design authorization models
+- Implement role mapping strategies
+- Implement group-based authorization
+- Expand enterprise application integrations
+- Mature identity governance processes
 
 ---
 
@@ -81,13 +91,18 @@ As additional requirements emerged, the solution expanded into a platform that a
 ### Administration Services
 
 - PowerShell
-- WinForms GUI
+- WinForms
 
 ### Storage Services
 
-- SMB Shares
-- NTFS ACLs
+- SMB
+- NTFS Permissions
 - Home Directory Services
+
+### Data Services
+
+- PostgreSQL
+- Persistent Storage
 
 ---
 
@@ -95,7 +110,7 @@ As additional requirements emerged, the solution expanded into a platform that a
 
 ### Identity
 
-- Active Directory Domain Services (AD DS)
+- Active Directory Domain Services
 - Microsoft Entra ID
 - Keycloak
 - LDAP
@@ -104,93 +119,84 @@ As additional requirements emerged, the solution expanded into a platform that a
 ### Automation
 
 - PowerShell
-- Windows Forms (WinForms)
+- Windows Forms
 
 ### Infrastructure
 
 - Kubernetes
 - Ingress NGINX
+- PostgreSQL
+- SMB CSI Storage
 - Kyverno
-
-### Storage
-
-- SMB
-- NTFS Permissions
-- Home Directory Services
 
 ### Authentication Protocols
 
-- OpenID Connect (OIDC)
-- SAML 2.0
 - LDAP
 - LDAPS
+- OIDC
+- SAML 2.0
 
 ---
 
 ## Architecture
 
-### Enterprise Identity Architecture
+### Enterprise Identity Platform
 
 ```text
-Administrator
-      ↓
-Dev-Ops-15 GUI
-      ↓
-Active Directory
-      ↓
-OU Assignment
-      ↓
-Group Assignment
-      ↓
-Home Folder Creation
-      ↓
-File Server
-      ↓
-User Login
-      ↓
-G: Drive / H: Drive
+Directory Services Platform
+│
+├─ DNS
+├─ Certificate Services
+├─ LDAPS
+├─ Users
+├─ Groups
+│
+▼
 
-                ↓
+Enterprise Identity Platform
+│
+├─ Enterprise Realm
+├─ LDAP Federation
+├─ User Synchronization
+├─ Trust Infrastructure
+├─ PostgreSQL Persistence
+│
+▼
 
-Microsoft Entra ID
-      ↓
-User Synchronization
-      ↓
-Group Synchronization
+Federated Users
 
-                ↓
+│
 
-Keycloak
-      ↓
-LDAP / LDAPS
-      ↓
-OIDC / SAML
-      ↓
-Applications
+├─ OIDC Federation
+└─ SAML Federation
+
+        │
+        ▼
+
+Enterprise Applications
 ```
 
-### Identity Provider Architecture
+### Identity Flow
 
 ```text
 User
       ↓
-Application
+Enterprise Application
       ↓
-Keycloak
+Identity Provider
       ↓
-LDAP / LDAPS
-      ↓
-Active Directory
-      ↓
+Directory Services
+
 Authentication
       ↓
-OIDC Token / SAML Assertion
+
+OIDC Token
+or
+SAML Assertion
+
       ↓
-Application
-      ↓
-RBAC Authorization
-      ↓
-Access Granted
+
+Application Access
 ```
 
 ---
@@ -215,32 +221,54 @@ Access Granted
 - Home Folder Creation
 - File Server Integration
 - ACL Automation
-- G: Drive Validation
-- H: Drive Validation
+- Drive Validation
+- Access Validation
 
 ### Phase 3 - Hybrid Identity
 
 ✅ Complete
 
-- Entra Connect Validation
 - User Synchronization
 - Group Synchronization
-- Group Membership Synchronization
+- Membership Synchronization
+- Cloud Identity Integration
 
-### Phase 4 - Identity Provider Platform
+### Phase 4 - Identity Provider Foundation
+
+✅ Complete
+
+- Keycloak Deployment
+- Enterprise Realm Configuration
+- PostgreSQL Persistence
+- Truststore Configuration
+- LDAPS Authentication
+- LDAP Federation
+- User Synchronization
+- Administrative Access
+- Imported User Validation
+
+### Phase 5 - Application SSO
 
 🟨 In Progress
 
+Current Focus:
+
+- Grafana OIDC Integration
+
 Completed:
 
-- Keycloak Deployed
-- SOLIS Realm Created
-- Admin Account Created
-- Bootstrap Password Replaced
-- LDAP Provider Created
-- LDAP Connectivity Validated
-- LDAPS Connectivity Validated
-- Root Cause Identified
+- Application Routing
+- Reverse Proxy Configuration
+- Application Reachability Validation
+
+Current Tasks:
+
+- Create OIDC Client
+- Configure OAuth Integration
+- Validate Authentication
+- Validate Claims
+- Validate Logout
+- Validate Dashboard Access
 
 ---
 
@@ -248,100 +276,135 @@ Completed:
 
 ### Identity Automation
 
-- User Creation Validated
-- OU Placement Validated
-- Group Assignment Validated
-- Logging Validated
+- User Creation Validation
+- OU Placement Validation
+- Group Assignment Validation
+- Logging Validation
 
 ### Access Validation
 
-- Home Folder Provisioning Validated
-- ACL Assignment Validated
-- G: Drive Validation
-- H: Drive Validation
+- Home Folder Provisioning Validation
+- ACL Assignment Validation
+- Drive Access Validation
 
 ### Hybrid Identity Validation
 
-- Entra User Synchronization
-- Entra Group Synchronization
-- Group Membership Synchronization
+- User Synchronization Validation
+- Group Synchronization Validation
+- Membership Synchronization Validation
 
 ### Identity Provider Validation
 
 - Keycloak Deployment
-- Realm Administration
-- LDAP Provider Connectivity
+- PostgreSQL Persistence
+- Persistent Storage
+- Truststore Configuration
+- LDAP Connectivity
 - LDAPS Connectivity
+- LDAP Authentication
+- User Synchronization
+- Imported User Validation
+- Administrative Access
 
 ---
 
 ## Current Status
 
-Current LDAP federation status:
+### Identity Foundation
 
-✅ LDAP Provider Created
+✅ Operational
 
-✅ LDAP Connectivity Successful
+Validated:
 
-✅ LDAPS Connectivity Successful
+- PostgreSQL Persistence
+- Trust Infrastructure
+- LDAPS
+- LDAP Federation
+- User Synchronization
+- Administrative Access
+- Imported Users
 
-❌ LDAP Authentication Failed
+### Current Work
 
-Root Cause Identified:
+🟨 Grafana OIDC Integration
 
-Active Directory requires secure LDAP authentication over LDAPS.
+Next:
+
+- Create OIDC Client
+- Configure OAuth
+- Validate Authentication
+- Validate Claims
+- Validate Logout
+- Validate Dashboard Access
 
 ---
 
 ## Lessons Learned
 
 - Authentication and authorization are separate functions.
-- LDAP connectivity does not guarantee authentication success.
-- Hybrid identity validation requires users, groups, and memberships to synchronize successfully.
-- Identity services and storage services should remain architecturally separated.
-- Stateful applications require persistent storage planning.
+- LDAP connectivity does not guarantee successful authentication.
+- Hybrid identity validation requires user, group, and membership synchronization.
+- Persistence must be validated rather than assumed.
+- PKIX failures often indicate trust infrastructure issues.
+- Trust validation and hostname validation are independent controls.
+- Identity providers depend on multiple platform services operating correctly.
+- Federation requires more than network connectivity.
 
 ---
 
 ## Key Outcomes
 
-- Enterprise onboarding workflow automated.
-- Home folder provisioning fully automated.
-- ACL assignment automated.
-- Active Directory integrated with Microsoft Entra ID.
-- Keycloak established as an enterprise identity provider.
-- Foundation created for OIDC and SAML federation.
+- Automated onboarding workflow implemented.
+- Home folder provisioning automated.
+- Access control assignment automated.
+- Hybrid identity synchronization validated.
+- Enterprise identity provider established.
+- PostgreSQL-backed persistence implemented.
+- LDAPS federation operational.
+- User synchronization operational.
+- Foundation established for enterprise SSO.
 
 ---
 
 ## Future Enhancements
 
-1. Remove old bootstrap password from deployment.
-2. Move credentials into Kubernetes Secret.
-3. Configure LDAPS federation.
-4. Validate Active Directory authentication.
-5. Import Active Directory users.
-6. Synchronize Active Directory groups.
-7. Implement first OIDC application.
-8. Implement first SAML application.
-9. Add PostgreSQL backend and persistent storage.
-10. Implement backup and recovery processes.
+1. Complete Grafana OIDC integration.
+2. Validate OIDC claims and authentication flows.
+3. Implement Jenkins SAML federation.
+4. Design authorization strategy.
+5. Implement role mapping.
+6. Implement group mapping.
+7. Expand OIDC integrations.
+8. Expand SAML integrations.
+9. Mature identity governance processes.
 
 ---
 
 ## Repository Structure
 
-Repository documentation and implementation artifacts are organized into:
-
-- docs/
-- diagrams/
-- kubernetes/
-- scripts/
-- screenshots/
-- examples/
+```text
+docs/
+diagrams/
+kubernetes/
+scripts/
+screenshots/
+examples/
+```
 
 ---
 
 ## Screenshots
 
 Screenshots will be added as implementation milestones are completed.
+
+Planned screenshots:
+
+- Identity Platform GUI
+- User Provisioning Validation
+- Home Folder Provisioning
+- Hybrid Identity Validation
+- Identity Provider Administration
+- LDAP Federation
+- User Synchronization
+- Grafana OIDC Authentication
+- SAML Federation Validation
