@@ -1,6 +1,6 @@
 # Dev-Ops-15 Enterprise Identity & Administration Platform
 
-diagrams/dev-ops-15-high-level-architecture.png
+![Dev-Ops-15 SSO Architecture](diagrams/solis-sso-architecture.jpg)
 
 ## Overview
 
