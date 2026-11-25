@@ -2,6 +2,17 @@
 
 ![Dev-Ops-15 SSO Architecture](diagrams/solis-sso-architecture.jpg)
 
+![PowerShell]
+![Active Directory]
+![Microsoft Entra ID]
+![Keycloak]
+![LDAP]
+![OIDC]
+![SAML]
+![PostgreSQL]
+![Kubernetes]
+![Kyverno]
+
 ## Overview
 
 Dev-Ops-15 is an Enterprise Identity & Administration Platform designed to automate identity lifecycle management, directory services provisioning, organizational unit assignment, department group assignment, home folder provisioning, access control enforcement, hybrid identity synchronization, identity federation, and modern authentication services.
