@@ -2,16 +2,16 @@
 
 ![Dev-Ops-15 SSO Architecture](diagrams/solis-sso-architecture.jpg)
 
-![PowerShell]
-![Active Directory]
-![Microsoft Entra ID]
-![Keycloak]
-![LDAP]
-![OIDC]
-![SAML]
-![PostgreSQL]
-![Kubernetes]
-![Kyverno]
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
+![Active Directory](https://img.shields.io/badge/Active_Directory-003366?style=flat-square&logo=windows&logoColor=white)
+![Microsoft Entra ID](https://img.shields.io/badge/Microsoft_Entra_ID-0078D4?style=flat-square&logo=microsoft&logoColor=white)
+![Keycloak](https://img.shields.io/badge/Keycloak-4D4D4D?style=flat-square&logo=keycloak&logoColor=white)
+![LDAP](https://img.shields.io/badge/LDAP-2C5AA0?style=flat-square)
+![OIDC](https://img.shields.io/badge/OIDC-Authentication-green?style=flat-square)
+![SAML](https://img.shields.io/badge/SAML-Federation-orange?style=flat-square)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![Kyverno](https://img.shields.io/badge/Kyverno-326CE5?style=flat-square)
 
 ## Overview
 
