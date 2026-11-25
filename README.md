@@ -62,13 +62,16 @@ As additional requirements emerged, the platform expanded to provide:
 
 ### Future Objectives
 
-- Implement OIDC authentication for enterprise applications
-- Implement SAML federation for enterprise applications
-- Design authorization models
-- Implement role mapping strategies
-- Implement group-based authorization
+### Future Objectives
+
 - Expand enterprise application integrations
-- Mature identity governance processes
+- Implement advanced authorization services
+- Expand role-based access control models
+- Implement fine-grained authorization policies
+- Expand identity governance capabilities
+- Integrate governance workflows with Kubernetes policy enforcement
+- Evaluate Kubernetes OIDC integration
+- Expand policy-driven platform governance
 
 ---
 
@@ -349,7 +352,6 @@ The platform is operational and successfully provides identity services, authent
 Future enhancements will focus on governance maturity, advanced authorization models, and additional integrations.
 
 ---
-
 ## Lessons Learned
 
 - Authentication and authorization are separate functions.
@@ -363,6 +365,24 @@ Future enhancements will focus on governance maturity, advanced authorization mo
 
 ---
 
+## Governance Validation
+
+- Group Synchronization Validation
+- Role Mapping Validation
+- Role Inheritance Validation
+- Authorization Validation
+- Policy Enforcement Validation
+
+Result:
+
+✅ Governance Model Operational
+
+✅ Role-Based Authorization Operational
+
+✅ Policy Enforcement Operational
+
+---
+
 ## Key Outcomes
 
 - Automated onboarding workflow implemented.
@@ -373,7 +393,7 @@ Future enhancements will focus on governance maturity, advanced authorization mo
 - PostgreSQL-backed persistence implemented.
 - LDAPS federation operational.
 - User synchronization operational.
-- Foundation established for enterprise SSO.
+- Enterprise Single Sign-On implemented and validated.
 - Enterprise Single Sign-On successfully validated.
 - Governance model implemented through groups, roles, and inheritance.
 - Authorization model validated using synchronized directory groups.
@@ -406,16 +426,37 @@ examples/
 
 ## Screenshots
 
-Screenshots will be added as implementation milestones are completed.
+### ArgoCD OIDC Login
 
-Planned screenshots:
+![ArgoCD OIDC Login](screenshots/01-argocd-oidc-login.png)
+ArgoCD authentication portal demonstrating OpenID Connect integration through Microsoft Entra ID.
 
-- Identity Platform GUI
-- User Provisioning Validation
-- Home Folder Provisioning
-- Hybrid Identity Validation
-- Identity Provider Administration
-- LDAP Federation
-- User Synchronization
-- Grafana OIDC Authentication
-- SAML Federation Validation
+### LDAP Federation
+
+![LDAP Federation](screenshots/02-ldap-federation.png)
+LDAP federation configuration demonstrating secure LDAPS integration between Active Directory and the enterprise identity platform.
+
+### Imported User Federation
+
+![Imported User Federation](screenshots/03-imported-user-federation.png)
+LDAP-federated user synchronized from Active Directory into the enterprise identity platform.
+
+### Keycloak Login Page
+
+![Keycloak Login Page](screenshots/04-keycloak-login-page.png)
+Custom Keycloak authentication portal providing centralized identity services and enterprise single sign-on.
+
+### Keycloak Authentication Flow
+
+![Keycloak Authentication Flow](screenshots/05-keycloak-authentication-flow.png)
+User authentication workflow through the SOLIS identity provider prior to federated access to enterprise applications.
+
+### Jenkins SAML Dashboard
+
+![Jenkins SAML Dashboard](screenshots/06-jenkins-saml-dashboard.png)
+Production Jenkins dashboard accessed through successful SAML federation with Keycloak.
+
+### Kyverno Deny Policy
+
+![Kyverno Deny Policy](screenshots/07-kyverno-deny-policy.png)
+Kyverno admission controller blocking deployment creation due to governance policy violations, including prohibited image tags and missing required governance labels.
